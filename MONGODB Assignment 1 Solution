@@ -1,20 +1,21 @@
-Query 1: db.students.find({department:'IT'},{name:true,cgpa:true})
-Query 2: db.students.find({cgpa:{$gte:8.5}},{name:true,roll_no:true,department:true})
-Query 3: db.students.find({ department: { $in: ["ECE", "ME"] } })
-Query 4: db.students.find({year:4,cgpa:{$gt:8.0}},{name:true,cgpa:true})
-Query 5: db.students.find({$and: [{ department: { $ne: "CSE" } },{ cgpa: { $lte: 7.5 } }]})
+Query 1: db.students.find( {department:'IT'}, {name:true,cgpa:true} )
+Query 2: db.students.find( {cgpa:{$gte:8.5}}, {name:true,roll_no:true,department:true} )
+Query 3: db.students.find( {department:{$in:["ECE","ME"]}} )
+Query 4: db.students.find( {year:4,cgpa:{$gt:8.0}}, {name:true,cgpa:true} )
+Query 5: db.students.find( {$and: [{department:{$ne:"CSE"}}, {cgpa:{$lte:7.5}}]} )
 Query 6: db.students.find().sort({cgpa:-1}).limit(3)
 Query 7: db.students.find().sort({cgpa:-1}).skip(3).limit(3)
-Query 8: db.students.updateMany({department:"CSE"},{$inc:{cgpa:0.2}})
-Query 9: db.students.updateMany({cgpa:{$lt:7.0}},{$set:{department:"Probation"}})
-Query 10: db.students.updateMany({department:"ME"},{$unset:{email:""}})
-Query 11: db.students.updateMany({},{$rename:{"cgpa":"gpa"}})
-Query 12: db.students.replaceOne( { roll_no: "CSE2104" },{
+Query 8: db.students.updateMany( {department:"CSE"}, {$inc:{cgpa:0.2}} )
+Query 9: db.students.updateMany( {cgpa:{$lt:7.0}},{$set:{department:"Probation"}} )
+Query 10: db.students.updateMany( {department:"ME"}, {$unset:{email:""}} )
+Query 11: db.students.updateMany( {}, {$rename:{"cgpa":"gpa"}} )
+Query 12: db.students.replaceOne( 
+{ roll_no: "CSE2104" },{
 roll_no: "CSE2104",
 name: "LALKESH",
 year: 3,
 department: "CSE",
 cgpa: 9,
-email: "lalkesh.new@univ.edu
+email: "lalkesh.new@univ.edu"
 }
 )
